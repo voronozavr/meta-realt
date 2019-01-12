@@ -1,5 +1,5 @@
-import { FETCH_ADS_SUCCESS, FETCH_ADS_FAILURE, FETCH_ADS_REQUEST } from './actionsTypes';
 import axios from 'axios';
+import { FETCH_ADS_SUCCESS, FETCH_ADS_FAILURE, FETCH_ADS_REQUEST } from './actionsTypes';
 
 const fetchAdsRequest = () => ({
   type: FETCH_ADS_REQUEST,
@@ -18,9 +18,9 @@ export const fetchAllAds = () => (
   (dispatch) => {
     dispatch(fetchAdsRequest());
     return axios.get('http://localhost:3333/ads/')
-    .then(response => {
-      dispatch(fetchAdsSuccess(response.data));
-    })
-    .catch(e => dispatch(fetchAdsFailure(e)));
+      .then(response => {
+        dispatch(fetchAdsSuccess(response.data));
+      })
+      .catch(e => dispatch(fetchAdsFailure(e)));
   }
 );

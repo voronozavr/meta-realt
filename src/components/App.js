@@ -3,10 +3,10 @@ import React, { PureComponent } from 'react';
 import AdsList from '../containers/adsList';
 
 class App extends PureComponent {
-  render () {
+  render() {
     return (
       <div>
-        <AdsList/>
+        <AdsList />
       </div>
     );
   }
