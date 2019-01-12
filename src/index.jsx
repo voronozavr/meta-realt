@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 
-import App from './components/App';
-import store from './store';
+import App from './components/app';
+import store from './store/configStore';
+import { fetchAllAds } from './actions';
 
 import './index.html';
 
+store.dispatch(fetchAllAds());
+
 ReactDOM.render(
-    <Provider store = {store}>
-        <App/>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store = {store}>
+      <App/>
+  </Provider>,
+  document.getElementById('root')
 );

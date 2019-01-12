@@ -1,29 +1,25 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import Ads from '../components/Ads';
+import { connect } from 'react-redux';
+import Ad from '../components/ad';
 
-function AdsList({ads}) {
-    return (
-        <div>
-            {ads.map((ad, key) => {
-                return (
-                    <Ads
-                        key = {key}
-                        address = {ad.address}
-                        price = {ad.price}
-                        rooms = {ad.rooms}
-                        square = {ad.square}
-                    />
-                );
-            })}
-        </div>
-    );
-}
+const AdsList = ({ads}) => (
+  <div>
+    {ads.map((ad, key) => (
+      <Ad
+        key = { key }
+        address = { ad.address }
+        price = { ad.price }
+        rooms = { ad.rooms }
+        square = { ad.square }
+      />
+    ))}
+  </div>
+)
 
-const mapStateToProps = state => {
-    return {
-        ads: state.ads
-    };
-}
+const mapStateToProps = state => ({
+    ads: state.ads,
+    isFetching: state.isFetching,
+    error: state.error,
+})
 
 export default connect(mapStateToProps)(AdsList);

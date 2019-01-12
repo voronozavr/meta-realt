@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
-import AdsList from '../containers/AdsList';
+import AdsList from '../containers/adsList';
 
-class App extends React.Component {
-    render () {
-        return (
-            <div>
-                <AdsList/>
-            </div>
-        );
-    }
+class App extends PureComponent {
+  render () {
+    return (
+      <div>
+        <AdsList/>
+      </div>
+    );
+  }
 }
 
 export default App;
