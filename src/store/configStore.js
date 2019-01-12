@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware } from 'redux';
-import compose from '../reducers';
+import { createStore, applyMiddleware, compose } from 'redux';
+import reducer from '../reducers';
 import thunk from 'redux-thunk';
 
 const composeEnhancers =
@@ -10,6 +10,10 @@ const composeEnhancers =
   name: 'Meta-realt',
 }) : compose;
 
-const store = createStore(composeEnhancers, applyMiddleware(thunk));
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk),
+);
+
+const store = createStore(reducer, enhancer);
 
 export default store;
