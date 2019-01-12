@@ -25,6 +25,11 @@ const webpackConfig = {
         use: 'babel-loader',
       },
       {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: 'eslint-loader',
+      },
+      {
         test: /\.html$/,
         use: [{
           loader: 'file-loader',
@@ -52,6 +57,5 @@ const webpackConfig = {
     hot: true,
   }
 };
-  
+
   module.exports = webpackConfig;
-  
