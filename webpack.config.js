@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
+// const miniCssPlugin = require('mini-css-extract-plugin');
 
 const webpackConfig = {
   entry: {
@@ -26,18 +27,28 @@ const webpackConfig = {
       },
       {
         test: /\.jsx?$/,
+        enforce: 'pre',
         exclude: /node_modules/,
         use: 'eslint-loader',
       },
       {
+        test: /\.css?$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
         test: /\.html$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-          }
-        }]
-      }
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -47,6 +58,10 @@ const webpackConfig = {
         'NODE_ENV': JSON.stringify('development')
       }
     }),
+    // new miniCssPlugin({
+    //   filename: '[name].css',
+    //   chunkFilename: '[id].css',
+    // }),
   ],
   devServer: {
     contentBase: resolve(__dirname, 'devel'),

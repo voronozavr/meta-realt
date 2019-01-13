@@ -3,7 +3,11 @@
   "env": {
     "browser": true
   },
+  "parser": "babel-eslint",
   "plugins": [
     "react"
-  ]
+  ],
+  "rules": {
+    "import/no-extraneous-dependencies": 0
+  }
 }
