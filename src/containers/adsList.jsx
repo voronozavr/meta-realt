@@ -20,9 +20,9 @@ class adsList extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  ads: state.ads.ads,
-  isFetching: state.ads.loading,
-  error: state.ads.error,
+  ads: state.entities.ads,
+  isFetching: state.entities.loading,
+  error: state.entities.error,
 });
 
 adsList.propTypes = {
