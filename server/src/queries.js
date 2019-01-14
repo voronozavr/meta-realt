@@ -9,18 +9,31 @@ const pool = new PoolConst({
 });
 
 const getAds = (req, res) => {
-  pool.query('select * from ads', (error, results) => {
-    if (error) {
-      throw error;
+  const paramArray = [
+    req.query.adid,
+    req.query.rooms,
+  ];
+  const queryArray = [
+    'id = ',
+    'rooms = ',
+  ];
+
+  let query = 'select * from ads ';
+  let isFirstParam = true;
+
+  paramArray.forEach((param, index) => {
+    if (param) {
+      if (isFirstParam) {
+        query += 'where ';
+        isFirstParam = false;
+      } else {
+        query += 'and ';
+      }
+      query += `${queryArray[index]} ${param} `;
     }
-    res.status(200).json(results.rows);
   });
-};
 
-const getAdById = (req, res) => {
-  const adId = req.params.id;
-
-  pool.query('select * from ads where id = $1', [adId], (error, results) => {
+  pool.query(query, (error, results) => {
     if (error) {
       throw error;
     }
@@ -30,5 +43,4 @@ const getAdById = (req, res) => {
 
 module.exports = {
   getAds,
-  getAdById,
 };

@@ -17,7 +17,7 @@ const fetchAdsFailure = () => ({
 const fetchAllAds = () => (
   (dispatch) => {
     dispatch(fetchAdsRequest());
-    return axios.get('http://localhost:3333/ads/')
+    return axios.get('http://localhost:3333/ads')
       .then((response) => {
         dispatch(fetchAdsSuccess(response.data));
       })
