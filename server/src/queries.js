@@ -19,6 +19,29 @@ const getAds = (req, res) => {
   });
 };
 
+const getRegions = (req, res) => {
+  const query = 'select * from regions';
+  pool.query(query, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows);
+  });
+};
+
+const getLocalities = (req, res) => {
+  const region = req.query.regionid;
+  const query = `select * from localities where regionid = ${region}`;
+  pool.query(query, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows);
+  });
+};
+
 module.exports = {
   getAds,
+  getRegions,
+  getLocalities,
 };
