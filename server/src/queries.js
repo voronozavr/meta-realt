@@ -1,4 +1,5 @@
 const PoolConst = require('pg').Pool;
+const queryBuilder = require('./queryBuilder');
 
 const pool = new PoolConst({
   user: 'postgres',
@@ -9,30 +10,7 @@ const pool = new PoolConst({
 });
 
 const getAds = (req, res) => {
-  const paramArray = [
-    req.query.adid,
-    req.query.rooms,
-  ];
-  const queryArray = [
-    'id = ',
-    'rooms = ',
-  ];
-
-  let query = 'select * from ads ';
-  let isFirstParam = true;
-
-  paramArray.forEach((param, index) => {
-    if (param) {
-      if (isFirstParam) {
-        query += 'where ';
-        isFirstParam = false;
-      } else {
-        query += 'and ';
-      }
-      query += `${queryArray[index]} ${param} `;
-    }
-  });
-
+  const query = queryBuilder.build(req);
   pool.query(query, (error, results) => {
     if (error) {
       throw error;
