@@ -1,4 +1,8 @@
-import { FETCH_ADS_SUCCESS, FETCH_ADS_FAILURE, FETCH_ADS_REQUEST } from '../actions/actionsTypes';
+import {
+  FETCH_ADS_SUCCESS,
+  FETCH_ADS_FAILURE,
+  FETCH_ADS_REQUEST,
+} from '../actions/actionsTypes';
 
 const initState = {
   ads: [],

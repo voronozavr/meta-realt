@@ -4,11 +4,6 @@ import propTypes from 'prop-types';
 import AdsList from '../components/adsList';
 
 class adsList extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
-
   render() {
     const { ads } = this.props;
     return (
