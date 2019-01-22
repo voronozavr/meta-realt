@@ -8,6 +8,11 @@
     "react"
   ],
   "rules": {
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "react/prefer-stateless-function": 0,
+    "prefer-destructuring": ["error", {"array": false}],
+    "no-await-in-loop": 0,
+    "no-restricted-syntax": ["error", "ForInStatement"],
+    "no-console": 0
   }
 }
