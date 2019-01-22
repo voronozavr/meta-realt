@@ -12,7 +12,7 @@ const build = (req) => {
     'localityid = ',
   ];
 
-  let query = 'select * from ads ';
+  let query = 'select id, address, price, rooms, square from ads ';
   let isFirstParam = true;
 
   paramArray.forEach((param, index) => {
