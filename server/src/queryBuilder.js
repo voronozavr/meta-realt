@@ -12,7 +12,13 @@ const build = (req) => {
     'localityid = ',
   ];
 
-  let query = 'select * from ads ';
+  const page = req.query.page;
+  let query = 'select ';
+  if (!req.query.count) {
+    query += '* from ads ';
+  } else {
+    query += 'count(*) from ads ';
+  }
   let isFirstParam = true;
 
   paramArray.forEach((param, index) => {
@@ -26,6 +32,13 @@ const build = (req) => {
       query += `${queryArray[index]} ${param} `;
     }
   });
+
+  if (page) {
+    const perPage = 20;
+    const firstIndex = (page - 1) * perPage;
+    const lastIndex = page * perPage;
+    query += `offset ${firstIndex} limit ${lastIndex}`;
+  }
 
   return query;
 };

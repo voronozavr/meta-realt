@@ -30,8 +30,7 @@ const getRegions = (req, res) => {
 };
 
 const getLocalities = (req, res) => {
-  const region = req.query.regionid;
-  const query = `select * from localities where regionid = ${region}`;
+  const query = 'select * from localities';
   pool.query(query, (error, results) => {
     if (error) {
       throw error;
