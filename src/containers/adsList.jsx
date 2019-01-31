@@ -5,23 +5,25 @@ import AdsList from '../components/adsList';
 
 class adsList extends PureComponent {
   render() {
-    const { ads } = this.props;
+    const {
+      ads,
+      loading,
+    } = this.props;
     return (
-      <div>
-        <AdsList ads={ads} />
-      </div>
+      loading ? <p>Loading</p> : <AdsList ads={ads} />
     );
   }
 }
 
 const mapStateToProps = state => ({
   ads: state.entities.ads,
-  isFetching: state.entities.loading,
+  loading: state.entities.loading,
   error: state.entities.error,
 });
 
 adsList.propTypes = {
   ads: propTypes.instanceOf(Array).isRequired,
+  loading: propTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps)(adsList);
