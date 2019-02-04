@@ -9,7 +9,17 @@ import {
   FETCH_ADS_COUNT_REQUEST,
   FETCH_ADS_COUNT_SUCCESS,
   FETCH_ADS_COUNT_FAILURE,
+  ADS_PAGE_RESET,
 } from './actionsTypes';
+
+const resetCurrentPage = () => (
+  dispatch => (
+    dispatch({
+      type: ADS_PAGE_RESET,
+      payload: 1,
+    })
+  )
+);
 
 const getNextPage = nextPage => ({
   type: ADS_PAGE_INCREMENT,
@@ -109,4 +119,5 @@ export {
   fetchAdsCount,
   pageIncrement,
   pageDecrease,
+  resetCurrentPage,
 };

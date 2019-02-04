@@ -7,6 +7,7 @@ import {
   FETCH_ADS_COUNT_REQUEST,
   FETCH_ADS_COUNT_SUCCESS,
   FETCH_ADS_COUNT_FAILURE,
+  ADS_PAGE_RESET,
 } from '../actions/actionsTypes';
 
 const initState = {
@@ -43,6 +44,11 @@ export default function (state = initState, action) {
         currentPage: action.payload,
       };
     case ADS_PAGE_DECREASE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
+    case ADS_PAGE_RESET:
       return {
         ...state,
         currentPage: action.payload,

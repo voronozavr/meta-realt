@@ -50,18 +50,13 @@ const saveRegion = (name) => {
 };
 
 const getLocalities = (req, res) => {
-  const region = req.query.regionid;
-  if (region) {
-    const query = `select id, name from localities where regionid = ${region}`;
-    pool.query(query, (error, results) => {
-      if (error) {
-        throw error;
-      }
-      res.status(200).json(results.rows);
-    });
-  } else {
-    res.status(404).send();
-  }
+  const query = 'select * from localities';
+  pool.query(query, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows);
+  });
 };
 
 const getLocalityByNameAndRegion = (name, regionid) => {
