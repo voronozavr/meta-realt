@@ -5,6 +5,7 @@ import Filter from '../components/filter';
 import {
   fetchAds,
   fetchAdsCount,
+  resetCurrentPage,
 } from '../actions/ads';
 import {
   fetchAllLocalities,
@@ -23,8 +24,24 @@ class filter extends PureComponent {
     fetchLocalities();
   }
 
+  componentDidUpdate(prevProps) {
+    const {
+      currentPage,
+      currentRegion,
+      currentLocality,
+      updateAds,
+    } = this.props;
+    if (prevProps.currentRegion !== currentRegion ||
+      prevProps.currentLocality !== currentLocality) {
+      updateAds(currentRegion, currentLocality, currentPage);
+    }
+  }
+
   regionHandle = (option) => {
-    const { changeRegion, changeLocality } = this.props;
+    const {
+      changeRegion,
+      changeLocality,
+    } = this.props;
     changeRegion(option.target.value);
     changeLocality('');
   }
@@ -38,10 +55,7 @@ class filter extends PureComponent {
     const {
       localities,
       regions,
-      showAds,
       currentRegion,
-      currentLocality,
-      currentPage,
     } = this.props;
     return (
       <div>
@@ -52,7 +66,6 @@ class filter extends PureComponent {
           regionHandle={this.regionHandle}
           localityHandle={this.localityHandle}
         />
-        <button type="button" onClick={() => showAds(currentRegion, currentLocality, currentPage)}>show ads</button>
       </div>
     );
   }
@@ -69,7 +82,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchRegions: () => dispatch(fetchAllRegions()),
   fetchLocalities: () => dispatch(fetchAllLocalities()),
-  showAds: (region, locality, page) => {
+  updateAds: (region, locality, page) => {
+    dispatch(resetCurrentPage());
     dispatch(fetchAdsCount(region, locality));
     dispatch(fetchAds(region, locality, page));
   },
@@ -82,7 +96,7 @@ filter.propTypes = {
   regions: propTypes.instanceOf(Array).isRequired,
   fetchRegions: propTypes.func.isRequired,
   fetchLocalities: propTypes.func.isRequired,
-  showAds: propTypes.func.isRequired,
+  updateAds: propTypes.func.isRequired,
   currentRegion: propTypes.string,
   currentLocality: propTypes.string,
   currentPage: propTypes.number.isRequired,
