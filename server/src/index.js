@@ -11,7 +11,7 @@ app.get('/regions', db.getRegions);
 app.get('/localities', db.getLocalities);
 
 app.listen(3333, () => {
-  console.log('server is online');
+  console.log('server is running');
 });
 
 scraper.run();
