@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import '../css/pagination.css';
 
 const pagination = ({
   currentPage,
@@ -9,11 +10,16 @@ const pagination = ({
 }) => {
   const pagesCount = Math.ceil(adsCount / 20);
   return (
-    <div>
-      <button type="button" onClick={prevPageHandle}>prev</button>
-      { `${currentPage} of ${pagesCount}` }
-      <button type="button" onClick={() => nextPageHandle(pagesCount)}>next</button>
-      { `total ads count: ${adsCount}` }
+    <div className="pagination">
+      <button className="pageBtn" type="button" onClick={prevPageHandle}>&#10094;</button>
+      <span className="pageCount">{ `${currentPage} of ${pagesCount}` }</span>
+      <button className="pageBtn" type="button" onClick={() => nextPageHandle(pagesCount)}>&#10095;</button>
+      <p className="adsCountText">
+        total ads count:
+        <span className="adsCount">
+          {adsCount}
+        </span>
+      </p>
     </div>
   );
 };

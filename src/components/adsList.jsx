@@ -1,9 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Ad from './ad';
+import '../css/adsList.css';
 
 const adsList = ({ ads }) => (
-  <div>
+  <div className="adsList">
     {ads.map(ad => (
       <Ad
         key={ad.id}

@@ -1,0 +1,28 @@
+.pagination {
+  margin: auto;
+  text-align: center;
+  font-family: Calibri;
+}
+
+.pageCount{
+  font-size: 15px;
+}
+
+.adsCountText {
+  font-size: 15px;
+  margin: 0px;
+}
+
+.adsCount {
+  font-weight: bold;
+  color: #262c43;
+}
+
+.pageBtn {
+  padding: 5px;
+  background: #555555;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  margin: 5px;
+}
