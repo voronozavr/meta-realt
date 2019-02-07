@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import '../css/filter.css';
 
 const filter = ({
   localities,
@@ -8,7 +9,9 @@ const filter = ({
   regionHandle,
   localityHandle,
 }) => (
-  <div>
+  <div className="filterBlock">
+    Search
+    <span role="img" aria-label="magnifyingGlass">&#128270;</span>
     <select onChange={regionHandle}>
       <option value="">-select region-</option>
       {regions.map(region => (

@@ -1,0 +1,17 @@
+.head {
+  background-color: #2a2b32;
+}
+
+.headTitle {
+  color: #5f62ac;
+  font-family: "Arial Black";
+  margin: 0px 5px 0px;
+}
+
+.headTitleDescription {
+  color: #d3d3d3;
+  font-family: Calibri;
+  font-size: 15px;
+  margin: 0px 15px;
+  padding-bottom: 5px;
+}

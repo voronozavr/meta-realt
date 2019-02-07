@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import '../css/ad.css';
 
 const ad = ({
   address,
@@ -7,14 +8,22 @@ const ad = ({
   rooms,
   square,
 }) => (
-  <div>
-    <h3>
-      {`${rooms}room(s)/${square}m^2`}
-    </h3>
-    <p>
+  <div className="ad">
+    <p className="adHeadText">
+      { `${rooms} room(s) | ${square} ` }
+      m
+      <sup>
+        <small>
+          2
+        </small>
+      </sup>
+    </p>
+    <hr />
+    <p className="adAddress">
+      <span role="img" aria-label="House">&#127968;</span>
       {address}
     </p>
-    <p>
+    <p className="adPrice">
       {`${price} BYN`}
     </p>
   </div>
