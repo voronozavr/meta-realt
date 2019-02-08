@@ -50,7 +50,8 @@
   ```
   yarn install
   ```
-  2. Go to folder 'src', start server with the command:
+  2. To enable scraper change const 'scraperEnabled' to 'true' in index.js
+  3. Go to folder 'src', start server with the command:
   ```
   node index.js
   ```

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import AdsList from '../components/adsList';
+import '../css/adsList.css';
 
 class adsList extends PureComponent {
   render() {
@@ -10,7 +11,7 @@ class adsList extends PureComponent {
       loading,
     } = this.props;
     return (
-      loading ? <p>Loading</p> : <AdsList ads={ads} />
+      loading ? <p className="loadingText">Loading</p> : <AdsList ads={ads} />
     );
   }
 }

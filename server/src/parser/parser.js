@@ -20,7 +20,7 @@ const parseAdsList = (options) => {
     const adsUrl = [];
     osmosis
       .get(options.adsListUrl)
-      .paginate(options.nextPageBtn, 0).delay(500)
+      .paginate(options.nextPageBtn).delay(500)
       .find(options.adUrlBlock)
       .set({
         adUrl: '@href',
@@ -28,7 +28,8 @@ const parseAdsList = (options) => {
       .data((data) => {
         adsUrl.push(data.adUrl);
       })
-      .done(() => resolve(adsUrl));
+      .done(() => resolve(adsUrl))
+      .log(console.log);
   });
   return promise;
 };
