@@ -7,6 +7,7 @@ import {
   FETCH_REGIONS_FAILURE,
   FILTER_REGION_CHANGE,
   FILTER_LOCALITY_CHANGE,
+  FILTER_ROOMS_COUNT,
 } from '../actions/actionsTypes';
 
 const initState = {
@@ -14,6 +15,7 @@ const initState = {
   regions: [],
   currentRegion: null,
   currentLocality: null,
+  roomsCount: null,
   loading: false,
   error: null,
 };
@@ -65,6 +67,11 @@ export default function (state = initState, action) {
       return {
         ...state,
         currentLocality: action.payload,
+      };
+    case FILTER_ROOMS_COUNT:
+      return {
+        ...state,
+        roomsCount: action.payload,
       };
     default:
       return state;
