@@ -9,6 +9,7 @@ import {
   FETCH_REGIONS_FAILURE,
   FILTER_REGION_CHANGE,
   FILTER_LOCALITY_CHANGE,
+  FILTER_ROOMS_COUNT,
 } from './actionsTypes';
 
 const fetchLocalitiesRequest = () => ({
@@ -83,9 +84,19 @@ const changeCurrentLocality = localityId => (
   )
 );
 
+const changeRoomsCount = roomsCount => (
+  dispatch => (
+    dispatch({
+      type: FILTER_ROOMS_COUNT,
+      payload: roomsCount,
+    })
+  )
+);
+
 export {
   fetchAllLocalities,
   fetchAllRegions,
   changeCurrentRegion,
   changeCurrentLocality,
+  changeRoomsCount,
 };

@@ -57,7 +57,7 @@ const fetchAdsFailure = error => ({
   payload: error,
 });
 
-const fetchAds = (region, locality, page) => (
+const fetchAds = (region, locality, rooms, page) => (
   (dispatch) => {
     dispatch(fetchAdsRequest());
     let url = `${serverUrl}/ads`;
@@ -69,6 +69,9 @@ const fetchAds = (region, locality, page) => (
     }
     if (locality) {
       url += `&localityid=${locality}`;
+    }
+    if (rooms) {
+      url += `&rooms=${rooms}`;
     }
     return axios.get(url)
       .then((response) => {
@@ -94,7 +97,7 @@ const fetchAdsCountFailure = error => ({
   payload: error,
 });
 
-const fetchAdsCount = (region, locality) => (
+const fetchAdsCount = (region, locality, rooms) => (
   (dispatch) => {
     let url = `${serverUrl}/ads?count=true`;
     dispatch(fetchAdsCountRequest());
@@ -103,6 +106,9 @@ const fetchAdsCount = (region, locality) => (
     }
     if (locality) {
       url += `&localityid=${locality}`;
+    }
+    if (rooms) {
+      url += `&rooms=${rooms}`;
     }
     return axios.get(url)
       .then((response) => {

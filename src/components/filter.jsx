@@ -8,6 +8,7 @@ const filter = ({
   currentRegion,
   regionHandle,
   localityHandle,
+  roomsHandle,
 }) => (
   <div className="filterBlock">
     Search
@@ -26,6 +27,8 @@ const filter = ({
           <option key={locality.id} value={locality.id}>{locality.name}</option>
         ))}
     </select>
+    Rooms count:
+    <input onChange={roomsHandle} type="number" max="10" min="1" />
   </div>
 );
 
@@ -35,6 +38,7 @@ filter.propTypes = {
   currentRegion: propTypes.string,
   regionHandle: propTypes.func.isRequired,
   localityHandle: propTypes.func.isRequired,
+  roomsHandle: propTypes.func.isRequired,
 };
 
 filter.defaultProps = {
