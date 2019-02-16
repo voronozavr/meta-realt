@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const webpackConfig = {
   entry: {
@@ -25,22 +26,42 @@ const webpackConfig = {
         use: 'babel-loader',
       },
       {
+        test: /\.jsx?$/,
+        enforce: 'pre',
+        exclude: /node_modules/,
+        use: 'eslint-loader',
+      },
+      {
+        test: /\.css/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+        ],
+      },
+      {
         test: /\.html$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-          }
-        }]
-      }
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('development')
-      }
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
     }),
   ],
   devServer: {
@@ -50,8 +71,7 @@ const webpackConfig = {
     port: 8888,
     inline: true,
     hot: true,
-  }
+  },
 };
-  
-  module.exports = webpackConfig;
-  
+
+module.exports = webpackConfig;

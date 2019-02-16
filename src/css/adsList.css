@@ -1,0 +1,15 @@
+.adsList {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-radius: 2px;
+  margin: 0px 15px;
+  padding: 5px;
+  background-color: #f9f9f9;
+}
+
+.loadingText {
+  text-align: center;
+  font-weight: bold;
+}
