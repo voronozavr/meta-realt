@@ -9,21 +9,6 @@ const hataByOptions = {
     square: '.b-card__product .num',
   },
   formatOptions: {
-    localityRegionName: (addr) => {
-      let regionName = '-empty-';
-      let localityName = '-empty-';
-      if (addr) {
-        const addrArr = addr.split(' ');
-        if (addrArr[0] === 'г.') {
-          regionName = addrArr[1].substring(0, addrArr[1].length - 1);
-          localityName = addrArr[1].replace(',', '');
-        } else {
-          regionName = addrArr[0];
-          localityName = addrArr[3].replace(',', '');
-        }
-      }
-      return [regionName, localityName];
-    },
     address: (str) => {
       const addrArr = str.split(' ');
       let result = '';
