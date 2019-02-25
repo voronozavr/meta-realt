@@ -9,41 +9,15 @@
   ```
   2. Create tables:
 
-  **ads**
-
-  | Column | Type |
-  | --- | --- |
-  | id | bigserial |
-  | localityid | bigint |
-  | regionid | bigint |
-  | square | character varying |
-  | rooms | smallint |
-  | price | character varying |
-  | address | character varying |
-
-  **localities**
-
-  | Column | Type |
-  | --- | --- |
-  | id | bigserial |
-  | name | character varying |
-  | regionid | bigint |
-
-  **regions**
-
-  | Column | Type |
-  | --- | --- |
-  | id | bigserial |
-  | name | character varying |
-
-  **urls**
-
-  | Column | Type |
-  | --- | --- |
-  | id | bigserial |
-  | url | character varying |
-  | parsed | boolean |
-  | optionkey | character varying |
+  install the next packages with npm:
+  ```
+  npm install -g db-migrate
+  npm install -g db-migrate-pg
+  ```
+  go to 'server\databaseMigrate' folder and run command:
+  ```
+  db-migrate up
+  ```
 
 ### Server setup
   1. Go to server directory and install dependencies from file 'package.json':
