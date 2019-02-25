@@ -18,6 +18,34 @@ const saveNewUrls = async () => {
   console.log('All urls saved');
 };
 
+const getLocality = async (address) => {
+  let localityName = null;
+  let regionName = null;
+  const addrArr = address.split(' ');
+  if (addrArr[0] === 'г.') {
+    regionName = addrArr[1].substring(0, addrArr[1].length - 1);
+    localityName = addrArr[1].replace(',', '');
+  } else {
+    regionName = addrArr[0];
+    localityName = addrArr[3].replace(',', '');
+  }
+  let region = await db.getRegionByName(regionName);
+  if (!region) {
+    if (await db.saveRegion(regionName)) {
+      region = await db.getRegionByName(regionName);
+      console.log(`Region: ${region.name}(id: ${region.id}) saved`);
+    }
+  }
+  let locality = await db.getLocalityByNameAndRegion(localityName, region.id);
+  if (!locality) {
+    if (await db.saveLocality(localityName, region.id)) {
+      locality = await db.getLocalityByNameAndRegion(localityName, region.id);
+      console.log(`Locality: ${locality.name}(id: ${locality.id}, regionid: ${locality.regionid}) saved`);
+    }
+  }
+  return locality;
+};
+
 const parseAndSaveAds = async () => {
   const urlArr = await db.getNotParsedUrls();
   for (let i = 0; i < urlArr.length; i += 1) {
@@ -30,23 +58,7 @@ const parseAndSaveAds = async () => {
     const rooms = ad.rooms ? format.rooms(ad.rooms) : null;
     const price = format.price(ad.price);
     const square = format.square(ad.square);
-    const regionAndLocalityName = format.localityRegionName(address);
-    const regionName = regionAndLocalityName[0];
-    const localityName = regionAndLocalityName[1];
-    let region = await db.getRegionByName(regionName);
-    if (!region) {
-      if (await db.saveRegion(regionName)) {
-        region = await db.getRegionByName(regionName);
-        console.log(`Region: ${region.name}(id: ${region.id}) saved`);
-      }
-    }
-    let locality = await db.getLocalityByNameAndRegion(localityName, region.id);
-    if (!locality) {
-      if (await db.saveLocality(localityName, region.id)) {
-        locality = await db.getLocalityByNameAndRegion(localityName, region.id);
-        console.log(`Locality: ${locality.name}(id: ${locality.id}, regionid: ${locality.regionid}) saved`);
-      }
-    }
+    const locality = await getLocality(address);
     if (db.saveAd(address, price, rooms, square, locality.regionid, locality.id)) {
       console.log('__ad saved');
       db.changeUrlParsedStatus(url.id);

@@ -3,7 +3,7 @@ const cors = require('cors');
 const db = require('./queries/queries');
 const scraper = require('./scraper');
 
-const scraperEnabled = true;
+const scraperEnabled = false;
 
 const app = express();
 app.use(cors());
