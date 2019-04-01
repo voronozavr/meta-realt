@@ -15,10 +15,11 @@ class pagination extends PureComponent {
       currentPage,
       currentRegion,
       currentLocality,
+      roomsCount,
       updateAds,
     } = this.props;
     if (prevProps.currentPage !== currentPage) {
-      updateAds(currentRegion, currentLocality, currentPage);
+      updateAds(currentRegion, currentLocality, roomsCount, currentPage);
     }
   }
 
@@ -55,14 +56,15 @@ const mapStateToProps = state => ({
   currentPage: state.entities.currentPage,
   currentRegion: state.filter.currentRegion,
   currentLocality: state.filter.currentLocality,
+  roomsCount: state.filter.roomsCount,
 });
 
 const mapDispatchToProps = dispatch => ({
   nextPage: (currentPage, lastPage) => dispatch(pageIncrement(currentPage, lastPage)),
   prevPage: currentPage => dispatch(pageDecrease(currentPage)),
-  updateAds: (region, locality, page) => {
-    dispatch(fetchAdsCount(region, locality));
-    dispatch(fetchAds(region, locality, page));
+  updateAds: (region, locality, rooms, page) => {
+    dispatch(fetchAdsCount(region, locality, rooms));
+    dispatch(fetchAds(region, locality, rooms, page));
   },
 });
 
@@ -72,6 +74,7 @@ pagination.propTypes = {
   currentPage: propTypes.number.isRequired,
   currentRegion: propTypes.string,
   currentLocality: propTypes.string,
+  roomsCount: propTypes.string,
   nextPage: propTypes.func.isRequired,
   prevPage: propTypes.func.isRequired,
   updateAds: propTypes.func.isRequired,
@@ -80,6 +83,7 @@ pagination.propTypes = {
 pagination.defaultProps = {
   currentRegion: null,
   currentLocality: null,
+  roomsCount: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(pagination);
