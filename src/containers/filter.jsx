@@ -45,8 +45,9 @@ class filter extends PureComponent {
       changeRegion,
       changeLocality,
     } = this.props;
-    changeRegion(option.target.value);
-    changeLocality('');
+    const regionId = option.target.value !== '' ? option.target.value : null;
+    changeRegion(regionId);
+    changeLocality(null);
   }
 
   localityHandle = (option) => {
@@ -56,7 +57,8 @@ class filter extends PureComponent {
 
   roomsHandle = (option) => {
     const { changeRooms } = this.props;
-    changeRooms(option.target.value);
+    const rooms = option.target.value !== '' ? option.target.value : null;
+    changeRooms(rooms);
   }
 
   render() {
