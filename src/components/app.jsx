@@ -3,6 +3,7 @@ import AdsList from '../containers/adsList';
 import Filter from '../containers/filter';
 import Pagination from '../containers/pagination';
 import Header from './header';
+import AdPopup from '../containers/adPopup';
 import '../css/app.css';
 
 class App extends PureComponent {
@@ -14,6 +15,7 @@ class App extends PureComponent {
         <Pagination />
         <AdsList />
         <Pagination />
+        <AdPopup />
       </div>
     );
   }

@@ -3,12 +3,14 @@ import propTypes from 'prop-types';
 import '../css/ad.css';
 
 const ad = ({
+  id,
   address,
   price,
   rooms,
   square,
+  clickHandle,
 }) => (
-  <div className="ad">
+  <div id={id} className="ad" onClick={clickHandle} role="presentation">
     <p className="adHeadText">
       { `${rooms} room(s) | ${square} ` }
       m
@@ -30,10 +32,12 @@ const ad = ({
 );
 
 ad.propTypes = {
+  id: propTypes.string.isRequired,
   address: propTypes.string.isRequired,
   price: propTypes.string.isRequired,
   rooms: propTypes.number.isRequired,
   square: propTypes.string.isRequired,
+  clickHandle: propTypes.func.isRequired,
 };
 
 export default ad;
