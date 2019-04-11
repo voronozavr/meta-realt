@@ -33,6 +33,9 @@ const adPopup = ({ ad, closeBtnHandler }) => (
             <td>{ad.price}</td>
           </tr>
           <tr>
+            <td className="tdCenter" colSpan="2">{ad.description}</td>
+          </tr>
+          <tr>
             <td className="tdCenter" colSpan="2">{`Ad parsed at: ${ad.createdAt}`}</td>
           </tr>
         </tbody>
