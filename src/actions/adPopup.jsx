@@ -5,6 +5,9 @@ import {
   FETCH_AD_POPUP_REQUEST,
   FETCH_AD_POPUP_SUCCESS,
   FETCH_AD_POPUP_FAILURE,
+  FETCH_AD_POPUP_PICS_REQUEST,
+  FETCH_AD_POPUP_PICS_SUCCESS,
+  FETCH_AD_POPUP_PICS_FAILURE,
 } from './actionsTypes';
 
 const changeAdPopupStatus = () => ({
@@ -35,7 +38,32 @@ const fetchAdPopupData = adId => (
   }
 );
 
+const fetchAdPopupPicsRequest = () => ({
+  type: FETCH_AD_POPUP_PICS_REQUEST,
+});
+
+const fetchAdPopupPicsSuccess = pics => ({
+  type: FETCH_AD_POPUP_PICS_SUCCESS,
+  payload: pics,
+});
+
+const fetchAdPopupPicsFailure = error => ({
+  type: FETCH_AD_POPUP_PICS_FAILURE,
+  payload: error,
+});
+
+const fetchAdPopupPics = adId => (
+  (dispatch) => {
+    const url = `${serverUrl}/ads/pics/${adId}`;
+    dispatch(fetchAdPopupPicsRequest());
+    return axios.get(url)
+      .then((response) => { dispatch(fetchAdPopupPicsSuccess(response.data)); })
+      .catch((e) => { dispatch(fetchAdPopupPicsFailure(e.message)); });
+  }
+);
+
 export {
   changeAdPopupStatus,
   fetchAdPopupData,
+  fetchAdPopupPics,
 };
