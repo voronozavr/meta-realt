@@ -2,17 +2,13 @@ import React from 'react';
 import propTypes from 'prop-types';
 import '../css/ad.css';
 
-const ad = ({
-  id,
-  address,
-  price,
-  rooms,
-  square,
+const component = ({
+  ad,
   clickHandle,
 }) => (
-  <div id={id} className="ad" onClick={clickHandle} role="presentation">
+  <div id={ad.id} className="ad" onClick={clickHandle} role="presentation">
     <p className="adHeadText">
-      { `${rooms} room(s) | ${square} ` }
+      { `${ad.rooms} room(s) | ${ad.square} ` }
       m
       <sup>
         <small>
@@ -21,23 +17,21 @@ const ad = ({
       </sup>
     </p>
     <hr />
+    <img className="adMainPic" key={ad.id} src={ad['pic.url']} alt="ad-pic" />
+    <hr />
     <p className="adAddress">
       <span role="img" aria-label="House">&#127968;</span>
-      {address}
+      {ad.address}
     </p>
     <p className="adPrice">
-      {`${price} BYN`}
+      {`${ad.price} BYN`}
     </p>
   </div>
 );
 
-ad.propTypes = {
-  id: propTypes.string.isRequired,
-  address: propTypes.string.isRequired,
-  price: propTypes.string.isRequired,
-  rooms: propTypes.number.isRequired,
-  square: propTypes.string.isRequired,
+component.propTypes = {
+  ad: propTypes.instanceOf(Object).isRequired,
   clickHandle: propTypes.func.isRequired,
 };
 
-export default ad;
+export default component;
