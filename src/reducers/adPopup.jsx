@@ -3,10 +3,14 @@ import {
   FETCH_AD_POPUP_REQUEST,
   FETCH_AD_POPUP_SUCCESS,
   FETCH_AD_POPUP_FAILURE,
+  FETCH_AD_POPUP_PICS_REQUEST,
+  FETCH_AD_POPUP_PICS_SUCCESS,
+  FETCH_AD_POPUP_PICS_FAILURE,
 } from '../actions/actionsTypes';
 
 const initState = {
   ad: {},
+  pics: [],
   showPopup: false,
   loading: false,
   error: null,
@@ -32,6 +36,24 @@ export default function (state = initState, action) {
         ad: action.payload,
       };
     case FETCH_AD_POPUP_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_AD_POPUP_PICS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case FETCH_AD_POPUP_PICS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        pics: action.payload,
+      };
+    case FETCH_AD_POPUP_PICS_FAILURE:
       return {
         ...state,
         loading: false,

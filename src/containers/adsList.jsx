@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import AdsList from '../components/adsList';
-import { fetchAdPopupData, changeAdPopupStatus } from '../actions/adPopup';
+import { fetchAdPopupData, fetchAdPopupPics, changeAdPopupStatus } from '../actions/adPopup';
 import '../css/adsList.css';
 
 class adsList extends PureComponent {
@@ -26,6 +26,7 @@ class adsList extends PureComponent {
 const mapDispatchToProps = dispatch => ({
   showPopup: (id) => {
     dispatch(fetchAdPopupData(id));
+    dispatch(fetchAdPopupPics(id));
     dispatch(changeAdPopupStatus());
   },
 });
