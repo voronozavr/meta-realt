@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import '../css/adPopup.css';
 
-const adPopup = ({ ad, pics, closeBtnHandler }) => (
+const component = ({ ad, pics, closeBtnHandler }) => (
   <div className="adPopup">
     <div className="adPopupContent">
       <button type="button" onClick={closeBtnHandler}>close</button>
@@ -53,10 +53,10 @@ const adPopup = ({ ad, pics, closeBtnHandler }) => (
   </div>
 );
 
-adPopup.propTypes = {
+component.propTypes = {
   ad: propTypes.instanceOf(Object).isRequired,
   pics: propTypes.instanceOf(Array).isRequired,
   closeBtnHandler: propTypes.func.isRequired,
 };
 
-export default adPopup;
+export default component;

@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import '../css/filter.css';
 
-const filter = ({
+const component = ({
   localities,
   regions,
   currentRegion,
@@ -32,7 +32,7 @@ const filter = ({
   </div>
 );
 
-filter.propTypes = {
+component.propTypes = {
   localities: propTypes.instanceOf(Array).isRequired,
   regions: propTypes.instanceOf(Array).isRequired,
   currentRegion: propTypes.string,
@@ -41,8 +41,8 @@ filter.propTypes = {
   roomsHandle: propTypes.func.isRequired,
 };
 
-filter.defaultProps = {
+component.defaultProps = {
   currentRegion: null,
 };
 
-export default filter;
+export default component;

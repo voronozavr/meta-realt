@@ -13,3 +13,13 @@
   text-align: center;
   font-weight: bold;
 }
+
+.adMainPic {
+  width: 250px;
+  height: 250px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+}

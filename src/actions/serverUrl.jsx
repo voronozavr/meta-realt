@@ -1,2 +1,1 @@
-const serverUrl = 'http://localhost:3333';
-export default serverUrl;
+export default 'http://localhost:3333';

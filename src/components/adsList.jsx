@@ -8,11 +8,7 @@ const adsList = ({ ads, clickHandle }) => (
     {ads.map(ad => (
       <Ad
         key={ad.id}
-        id={ad.id}
-        address={ad.address}
-        price={ad.price}
-        rooms={ad.rooms}
-        square={ad.square}
+        ad={ad}
         clickHandle={clickHandle}
       />
     ))}
