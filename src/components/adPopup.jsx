@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import entityProps from '../propTypes';
 import '../css/adPopup.css';
 
 const component = ({ ad, pics, closeBtnHandler }) => (
@@ -54,8 +55,8 @@ const component = ({ ad, pics, closeBtnHandler }) => (
 );
 
 component.propTypes = {
-  ad: propTypes.instanceOf(Object).isRequired,
-  pics: propTypes.instanceOf(Array).isRequired,
+  ad: entityProps.ad.isRequired,
+  pics: entityProps.pics.isRequired,
   closeBtnHandler: propTypes.func.isRequired,
 };
 

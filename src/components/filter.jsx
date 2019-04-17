@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import entityProps from '../propTypes';
 import '../css/filter.css';
 
 const component = ({
@@ -33,8 +34,8 @@ const component = ({
 );
 
 component.propTypes = {
-  localities: propTypes.instanceOf(Array).isRequired,
-  regions: propTypes.instanceOf(Array).isRequired,
+  localities: entityProps.localities.isRequired,
+  regions: entityProps.regions.isRequired,
   currentRegion: propTypes.string,
   regionHandle: propTypes.func.isRequired,
   localityHandle: propTypes.func.isRequired,

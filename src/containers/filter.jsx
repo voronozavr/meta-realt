@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import entityProps from '../propTypes';
 import Filter from '../components/filter';
 import {
   fetchAds,
@@ -105,8 +106,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 filter.propTypes = {
-  localities: propTypes.instanceOf(Array).isRequired,
-  regions: propTypes.instanceOf(Array).isRequired,
+  localities: entityProps.localities.isRequired,
+  regions: entityProps.regions.isRequired,
   fetchRegions: propTypes.func.isRequired,
   fetchLocalities: propTypes.func.isRequired,
   updateAds: propTypes.func.isRequired,
