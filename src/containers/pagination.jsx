@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import entityProps from '../propTypes';
 import Pagination from '../components/pagination';
 import {
   pageIncrement,
@@ -69,7 +70,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 pagination.propTypes = {
-  ads: propTypes.instanceOf(Array).isRequired,
+  ads: entityProps.ads.isRequired,
   adsCount: propTypes.number.isRequired,
   currentPage: propTypes.number.isRequired,
   currentRegion: propTypes.string,

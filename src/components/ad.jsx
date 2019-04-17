@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import entityProps from '../propTypes';
 import '../css/ad.css';
 
 const component = ({
@@ -30,7 +31,7 @@ const component = ({
 );
 
 component.propTypes = {
-  ad: propTypes.instanceOf(Object).isRequired,
+  ad: entityProps.ad.isRequired,
   clickHandle: propTypes.func.isRequired,
 };
 

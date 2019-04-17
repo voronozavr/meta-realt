@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import entityProps from '../propTypes';
 import AdPopup from '../components/adPopup';
 import { changeAdPopupStatus } from '../actions/adPopup';
 
@@ -48,8 +49,8 @@ const mapStateToProps = state => ({
 });
 
 adPopup.propTypes = {
-  ad: propTypes.instanceOf(Object).isRequired,
-  pics: propTypes.instanceOf(Array).isRequired,
+  ad: entityProps.ad.isRequired,
+  pics: entityProps.pics.isRequired,
   loading: propTypes.bool.isRequired,
   show: propTypes.bool.isRequired,
   changeAdPopupShowStatus: propTypes.func.isRequired,
