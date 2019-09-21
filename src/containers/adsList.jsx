@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import entityProps from '../propTypes';
 import AdsList from '../components/adsList';
 import { fetchAdPopupData, fetchAdPopupPics, changeAdPopupStatus } from '../actions/adPopup';
-import '../css/adsList.css';
+import '../scss/adsList.scss';
 
 class adsList extends PureComponent {
   adClickHandle = (e) => {

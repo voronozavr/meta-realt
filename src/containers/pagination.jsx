@@ -75,7 +75,7 @@ pagination.propTypes = {
   currentPage: propTypes.number.isRequired,
   currentRegion: propTypes.string,
   currentLocality: propTypes.string,
-  roomsCount: propTypes.string,
+  roomsCount: propTypes.number,
   nextPage: propTypes.func.isRequired,
   prevPage: propTypes.func.isRequired,
   updateAds: propTypes.func.isRequired,

@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import '../css/pagination.css';
+import '../scss/pagination.scss';
 
 const component = ({
   currentPage,
