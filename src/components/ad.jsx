@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import entityProps from '../propTypes';
-import '../css/ad.css';
+import '../scss/ad.scss';
 
 const component = ({
   ad,

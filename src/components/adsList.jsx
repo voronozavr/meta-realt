@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import entityProps from '../propTypes';
 import Ad from './ad';
-import '../css/adsList.css';
+import '../scss/adsList.scss';
 
 const adsList = ({ ads, clickHandle }) => (
   <div className="adsList">

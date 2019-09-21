@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import entityProps from '../propTypes';
-import '../css/adPopup.css';
+import '../scss/adPopup.scss';
 
 const component = ({ ad, pics, closeBtnHandler }) => (
   <div className="adPopup">

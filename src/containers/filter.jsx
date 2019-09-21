@@ -56,10 +56,23 @@ class filter extends PureComponent {
     changeLocality(option.target.value);
   }
 
-  roomsHandle = (option) => {
+  roomsIncrementHandle = () => {
+    const { changeRooms, roomsCount } = this.props;
+    if (roomsCount < 10) {
+      changeRooms(roomsCount + 1);
+    }
+  }
+
+  roomsDecreaseHandle = () => {
+    const { changeRooms, roomsCount } = this.props;
+    if (roomsCount > 0) {
+      changeRooms(roomsCount - 1);
+    }
+  }
+
+  resetRoomsHandle = () => {
     const { changeRooms } = this.props;
-    const rooms = option.target.value !== '' ? option.target.value : null;
-    changeRooms(rooms);
+    changeRooms(null);
   }
 
   render() {
@@ -67,6 +80,7 @@ class filter extends PureComponent {
       localities,
       regions,
       currentRegion,
+      roomsCount,
     } = this.props;
     return (
       <div>
@@ -74,9 +88,12 @@ class filter extends PureComponent {
           regions={regions}
           localities={localities}
           currentRegion={currentRegion}
+          roomsCount={roomsCount}
           regionHandle={this.regionHandle}
           localityHandle={this.localityHandle}
-          roomsHandle={this.roomsHandle}
+          roomsIncrementHandle={this.roomsIncrementHandle}
+          roomsDecreaseHandle={this.roomsDecreaseHandle}
+          resetRoomsHandle={this.resetRoomsHandle}
         />
       </div>
     );
@@ -113,7 +130,7 @@ filter.propTypes = {
   updateAds: propTypes.func.isRequired,
   currentRegion: propTypes.string,
   currentLocality: propTypes.string,
-  roomsCount: propTypes.string,
+  roomsCount: propTypes.number,
   currentPage: propTypes.number.isRequired,
   changeRegion: propTypes.func.isRequired,
   changeLocality: propTypes.func.isRequired,

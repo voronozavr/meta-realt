@@ -4,7 +4,7 @@ import Filter from '../containers/filter';
 import Pagination from '../containers/pagination';
 import Header from './header';
 import AdPopup from '../containers/adPopup';
-import '../css/app.css';
+import '../scss/app.scss';
 
 class App extends PureComponent {
   render() {

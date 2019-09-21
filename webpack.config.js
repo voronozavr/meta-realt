@@ -32,12 +32,12 @@ const webpackConfig = {
         use: 'eslint-loader',
       },
       {
-        test: /\.css/,
+        test: /\.scss/,
         exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader',
+          'sass-loader',
         ],
       },
       {
