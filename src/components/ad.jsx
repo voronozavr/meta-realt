@@ -1,16 +1,15 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import '../css/ad.css';
+import entityProps from '../propTypes';
+import '../scss/ad.scss';
 
-const ad = ({
-  address,
-  price,
-  rooms,
-  square,
+const component = ({
+  ad,
+  clickHandle,
 }) => (
-  <div className="ad">
+  <div id={ad.id} className="ad" onClick={clickHandle} role="presentation">
     <p className="adHeadText">
-      { `${rooms} room(s) | ${square} ` }
+      { `${ad.rooms} room(s) | ${ad.square} ` }
       m
       <sup>
         <small>
@@ -19,21 +18,21 @@ const ad = ({
       </sup>
     </p>
     <hr />
+    <img className="adMainPic" key={ad.id} src={ad['pic.url']} alt="ad-pic" />
+    <hr />
     <p className="adAddress">
       <span role="img" aria-label="House">&#127968;</span>
-      {address}
+      {ad.address}
     </p>
     <p className="adPrice">
-      {`${price} BYN`}
+      {`${ad.price} BYN`}
     </p>
   </div>
 );
 
-ad.propTypes = {
-  address: propTypes.string.isRequired,
-  price: propTypes.string.isRequired,
-  rooms: propTypes.number.isRequired,
-  square: propTypes.string.isRequired,
+component.propTypes = {
+  ad: entityProps.ad.isRequired,
+  clickHandle: propTypes.func.isRequired,
 };
 
-export default ad;
+export default component;

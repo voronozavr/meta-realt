@@ -1,24 +1,24 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import entityProps from '../propTypes';
 import Ad from './ad';
-import '../css/adsList.css';
+import '../scss/adsList.scss';
 
-const adsList = ({ ads }) => (
+const adsList = ({ ads, clickHandle }) => (
   <div className="adsList">
     {ads.map(ad => (
       <Ad
         key={ad.id}
-        address={ad.address}
-        price={ad.price}
-        rooms={ad.rooms}
-        square={ad.square}
+        ad={ad}
+        clickHandle={clickHandle}
       />
     ))}
   </div>
 );
 
 adsList.propTypes = {
-  ads: propTypes.instanceOf(Array).isRequired,
+  ads: entityProps.ads.isRequired,
+  clickHandle: propTypes.func.isRequired,
 };
 
 export default adsList;

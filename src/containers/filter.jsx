@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import entityProps from '../propTypes';
 import Filter from '../components/filter';
 import {
   fetchAds,
@@ -45,8 +46,9 @@ class filter extends PureComponent {
       changeRegion,
       changeLocality,
     } = this.props;
-    changeRegion(option.target.value);
-    changeLocality('');
+    const regionId = option.target.value !== '' ? option.target.value : null;
+    changeRegion(regionId);
+    changeLocality(null);
   }
 
   localityHandle = (option) => {
@@ -54,9 +56,23 @@ class filter extends PureComponent {
     changeLocality(option.target.value);
   }
 
-  roomsHandle = (option) => {
+  roomsIncrementHandle = () => {
+    const { changeRooms, roomsCount } = this.props;
+    if (roomsCount < 10) {
+      changeRooms(roomsCount + 1);
+    }
+  }
+
+  roomsDecreaseHandle = () => {
+    const { changeRooms, roomsCount } = this.props;
+    if (roomsCount > 0) {
+      changeRooms(roomsCount - 1);
+    }
+  }
+
+  resetRoomsHandle = () => {
     const { changeRooms } = this.props;
-    changeRooms(option.target.value);
+    changeRooms(null);
   }
 
   render() {
@@ -64,6 +80,7 @@ class filter extends PureComponent {
       localities,
       regions,
       currentRegion,
+      roomsCount,
     } = this.props;
     return (
       <div>
@@ -71,9 +88,12 @@ class filter extends PureComponent {
           regions={regions}
           localities={localities}
           currentRegion={currentRegion}
+          roomsCount={roomsCount}
           regionHandle={this.regionHandle}
           localityHandle={this.localityHandle}
-          roomsHandle={this.roomsHandle}
+          roomsIncrementHandle={this.roomsIncrementHandle}
+          roomsDecreaseHandle={this.roomsDecreaseHandle}
+          resetRoomsHandle={this.resetRoomsHandle}
         />
       </div>
     );
@@ -103,14 +123,14 @@ const mapDispatchToProps = dispatch => ({
 });
 
 filter.propTypes = {
-  localities: propTypes.instanceOf(Array).isRequired,
-  regions: propTypes.instanceOf(Array).isRequired,
+  localities: entityProps.localities.isRequired,
+  regions: entityProps.regions.isRequired,
   fetchRegions: propTypes.func.isRequired,
   fetchLocalities: propTypes.func.isRequired,
   updateAds: propTypes.func.isRequired,
   currentRegion: propTypes.string,
   currentLocality: propTypes.string,
-  roomsCount: propTypes.string,
+  roomsCount: propTypes.number,
   currentPage: propTypes.number.isRequired,
   changeRegion: propTypes.func.isRequired,
   changeLocality: propTypes.func.isRequired,
