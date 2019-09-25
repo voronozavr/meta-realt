@@ -10,9 +10,18 @@ const component = ({
   roomsCount,
   regionHandle,
   localityHandle,
+  minPriceHandle,
+  maxPriceHandle,
   roomsIncrementHandle,
   roomsDecreaseHandle,
   resetRoomsHandle,
+  minFloorHandle,
+  maxFloorHandle,
+  minSquareHandle,
+  maxSquareHandle,
+  combinedBathroomHandle,
+  balconyHandle,
+  searchBtnHandle,
 }) => (
   <div className="filterBlock">
     Search
@@ -38,12 +47,43 @@ const component = ({
         ))}
     </select>
     <br />
+    Price:
+    <br />
+    <input onChange={minPriceHandle} placeholder="min" />
+    <input onChange={maxPriceHandle} placeholder="max" />
+    <br />
     Rooms count:
     <br />
     {roomsCount || 0}
     <button onClick={roomsIncrementHandle} type="button">+</button>
     <button onClick={roomsDecreaseHandle} type="button">-</button>
     <button onClick={resetRoomsHandle} type="button">reset</button>
+    <br />
+    Floor:
+    <br />
+    <input onChange={minFloorHandle} placeholder="min" type="number" min="1" />
+    <input onChange={maxFloorHandle} placeholder="max" type="number" min="1" />
+    <br />
+    Square:
+    <br />
+    <input onChange={minSquareHandle} placeholder="min" />
+    <input onChange={maxSquareHandle} placeholder="max" />
+    <br />
+    Bathroom:
+    <select onChange={combinedBathroomHandle}>
+      <option value="">-select-</option>
+      <option value="1">combined</option>
+      <option value="0">separated</option>
+    </select>
+    <br />
+    Balcony:
+    <select onChange={balconyHandle}>
+      <option value="">-select-</option>
+      <option value="1">yes</option>
+      <option value="0">no</option>
+    </select>
+    <br />
+    <button onClick={searchBtnHandle} type="button">Search</button>
   </div>
 );
 
@@ -57,6 +97,15 @@ component.propTypes = {
   roomsIncrementHandle: propTypes.func.isRequired,
   roomsDecreaseHandle: propTypes.func.isRequired,
   resetRoomsHandle: propTypes.func.isRequired,
+  minPriceHandle: propTypes.func.isRequired,
+  maxPriceHandle: propTypes.func.isRequired,
+  minFloorHandle: propTypes.func.isRequired,
+  maxFloorHandle: propTypes.func.isRequired,
+  minSquareHandle: propTypes.func.isRequired,
+  maxSquareHandle: propTypes.func.isRequired,
+  combinedBathroomHandle: propTypes.func.isRequired,
+  balconyHandle: propTypes.func.isRequired,
+  searchBtnHandle: propTypes.func.isRequired,
 };
 
 component.defaultProps = {

@@ -9,17 +9,7 @@ import {
   FETCH_ADS_COUNT_REQUEST,
   FETCH_ADS_COUNT_SUCCESS,
   FETCH_ADS_COUNT_FAILURE,
-  ADS_PAGE_RESET,
 } from './actionsTypes';
-
-const resetCurrentPage = () => (
-  dispatch => (
-    dispatch({
-      type: ADS_PAGE_RESET,
-      payload: 1,
-    })
-  )
-);
 
 const getNextPage = nextPage => ({
   type: ADS_PAGE_INCREMENT,
@@ -57,7 +47,8 @@ const fetchAdsFailure = error => ({
   payload: error,
 });
 
-const fetchAds = (regionid, localityid, rooms, page) => (
+const fetchAds = (regionid, localityid, rooms, iscombinedbathroom, hasbalcony, minPrice, maxPrice,
+  minFloor, maxFloor, minSquare, maxSquare, page) => (
   (dispatch) => {
     dispatch(fetchAdsRequest());
     const url = `${serverUrl}/ads`;
@@ -68,6 +59,14 @@ const fetchAds = (regionid, localityid, rooms, page) => (
           regionid,
           localityid,
           rooms,
+          iscombinedbathroom,
+          hasbalcony,
+          minPrice,
+          maxPrice,
+          minFloor,
+          maxFloor,
+          minSquare,
+          maxSquare,
           page,
         },
       },
@@ -95,7 +94,8 @@ const fetchAdsCountFailure = error => ({
   payload: error,
 });
 
-const fetchAdsCount = (regionid, localityid, rooms) => (
+const fetchAdsCount = (regionid, localityid, rooms, iscombinedbathroom, hasbalcony, minPrice,
+  maxPrice, minFloor, maxFloor, minSquare, maxSquare) => (
   (dispatch) => {
     const url = `${serverUrl}/ads/count`;
     dispatch(fetchAdsCountRequest());
@@ -105,6 +105,14 @@ const fetchAdsCount = (regionid, localityid, rooms) => (
           regionid,
           localityid,
           rooms,
+          iscombinedbathroom,
+          hasbalcony,
+          minPrice,
+          maxPrice,
+          minFloor,
+          maxFloor,
+          minSquare,
+          maxSquare,
         },
       },
     )
@@ -122,5 +130,4 @@ export {
   fetchAdsCount,
   pageIncrement,
   pageDecrease,
-  resetCurrentPage,
 };

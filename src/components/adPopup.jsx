@@ -14,6 +14,10 @@ const component = ({ ad, pics, closeBtnHandler }) => (
             <td>{ad.address}</td>
           </tr>
           <tr>
+            <td>floor</td>
+            <td>{ad.floor}</td>
+          </tr>
+          <tr>
             <td>room(s)</td>
             <td>{ad.rooms}</td>
           </tr>
@@ -32,6 +36,18 @@ const component = ({ ad, pics, closeBtnHandler }) => (
           <tr>
             <td>price(BYN)</td>
             <td>{ad.price}</td>
+          </tr>
+          <tr>
+            <td>balcony</td>
+            <td>
+              <input type="checkbox" checked={ad.hasbalcony ? 'checked' : null} disabled />
+            </td>
+          </tr>
+          <tr>
+            <td>bathroom</td>
+            <td>
+              {ad.iscombinedbathroom ? 'combined' : 'separated'}
+            </td>
           </tr>
           <tr>
             <td className="tdCenter" colSpan="2">{ad.description}</td>

@@ -5,9 +5,7 @@ import {
   FETCH_REGIONS_REQUEST,
   FETCH_REGIONS_SUCCESS,
   FETCH_REGIONS_FAILURE,
-  FILTER_REGION_CHANGE,
-  FILTER_LOCALITY_CHANGE,
-  FILTER_ROOMS_COUNT,
+  SEARCH_FILTER_CHANGE,
 } from '../actions/actionsTypes';
 
 const initState = {
@@ -16,6 +14,14 @@ const initState = {
   currentRegion: null,
   currentLocality: null,
   roomsCount: null,
+  minPrice: null,
+  maxPrice: null,
+  minFloor: null,
+  maxFloor: null,
+  minSquare: null,
+  maxSquare: null,
+  combinedBathroom: null,
+  balcony: null,
   loading: false,
   error: null,
 };
@@ -58,20 +64,10 @@ export default function (state = initState, action) {
         loading: false,
         error: action.payload,
       };
-    case FILTER_REGION_CHANGE:
+    case SEARCH_FILTER_CHANGE:
       return {
         ...state,
-        currentRegion: action.payload,
-      };
-    case FILTER_LOCALITY_CHANGE:
-      return {
-        ...state,
-        currentLocality: action.payload,
-      };
-    case FILTER_ROOMS_COUNT:
-      return {
-        ...state,
-        roomsCount: action.payload,
+        ...action.payload,
       };
     default:
       return state;

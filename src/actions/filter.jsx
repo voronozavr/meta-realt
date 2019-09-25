@@ -7,9 +7,7 @@ import {
   FETCH_REGIONS_REQUEST,
   FETCH_REGIONS_SUCCESS,
   FETCH_REGIONS_FAILURE,
-  FILTER_REGION_CHANGE,
-  FILTER_LOCALITY_CHANGE,
-  FILTER_ROOMS_COUNT,
+  SEARCH_FILTER_CHANGE,
 } from './actionsTypes';
 
 const fetchLocalitiesRequest = () => ({
@@ -66,29 +64,11 @@ const fetchAllRegions = () => (
   }
 );
 
-const changeCurrentRegion = regionId => (
+const changeFilter = filter => (
   dispatch => (
     dispatch({
-      type: FILTER_REGION_CHANGE,
-      payload: regionId,
-    })
-  )
-);
-
-const changeCurrentLocality = localityId => (
-  dispatch => (
-    dispatch({
-      type: FILTER_LOCALITY_CHANGE,
-      payload: localityId,
-    })
-  )
-);
-
-const changeRoomsCount = roomsCount => (
-  dispatch => (
-    dispatch({
-      type: FILTER_ROOMS_COUNT,
-      payload: roomsCount,
+      type: SEARCH_FILTER_CHANGE,
+      payload: filter,
     })
   )
 );
@@ -96,7 +76,5 @@ const changeRoomsCount = roomsCount => (
 export {
   fetchAllLocalities,
   fetchAllRegions,
-  changeCurrentRegion,
-  changeCurrentLocality,
-  changeRoomsCount,
+  changeFilter,
 };
