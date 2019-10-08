@@ -11,12 +11,12 @@ const component = ({
   const pagesCount = Math.ceil(adsCount / 20);
   return (
     <div className="pagination">
-      <button className="pageBtn" type="button" onClick={prevPageHandle}>&#10094;</button>
-      <span className="pageCount">{ `${currentPage} of ${pagesCount}` }</span>
-      <button className="pageBtn" type="button" onClick={() => nextPageHandle(pagesCount)}>&#10095;</button>
-      <p className="adsCountText">
+      <button className="page-btn" type="button" onClick={prevPageHandle}>&#10094;</button>
+      <span className="page-count">{ `${currentPage} of ${pagesCount}` }</span>
+      <button className="page-btn" type="button" onClick={() => nextPageHandle(pagesCount)}>&#10095;</button>
+      <p className="ads-count-text">
         total ads count:
-        <span className="adsCount">
+        <span className="ads-count">
           {adsCount}
         </span>
       </p>

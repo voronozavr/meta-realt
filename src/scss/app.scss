@@ -1,4 +1,6 @@
+@import "./colorPalette";
+
 body {
   margin: 0px;
-  background-color: #e5e6e7;
+  background-color: $page-background-color;
 }

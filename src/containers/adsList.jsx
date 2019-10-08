@@ -18,7 +18,7 @@ class adsList extends PureComponent {
       loading,
     } = this.props;
     return (
-      loading ? <p className="loadingText">Loading</p>
+      loading ? <p className="loading-text">Loading</p>
         : <AdsList ads={ads} clickHandle={this.adClickHandle} />
     );
   }

@@ -5,7 +5,7 @@ import Ad from './ad';
 import '../scss/adsList.scss';
 
 const adsList = ({ ads, clickHandle }) => (
-  <div className="adsList">
+  <div className="ads-list-container">
     {ads.map(ad => (
       <Ad
         key={ad.id}

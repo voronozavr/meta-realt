@@ -1,28 +1,36 @@
+@import "./colorPalette";
+
 .pagination {
   margin: auto;
   text-align: center;
   font-family: Calibri;
+  clear: both;
 }
 
-.pageCount{
+.page-count{
   font-size: 15px;
 }
 
-.adsCountText {
+.ads-count-text {
   font-size: 15px;
   margin: 0px;
 }
 
-.adsCount {
+.ads-count {
   font-weight: bold;
   color: #262c43;
 }
 
-.pageBtn {
+.page-btn {
   padding: 5px;
-  background: #555555;
+  background: $main-color;
   border: none;
-  border-radius: 2px;
-  color: white;
+  border-radius: 5px;
+  color: black;
   margin: 5px;
+  outline: none;
+  &:hover {
+    color: $main-color;
+    background: black;
+  }
 }

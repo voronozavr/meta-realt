@@ -1,25 +1,15 @@
-.adsList {
-  display: grid;
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+@import "./colorPalette";
+
+.ads-list-container {
+  float: right;
   border-radius: 2px;
-  margin: 0px 15px;
-  padding: 5px;
-  background-color: #f9f9f9;
+  width: 83.5%;
+  background-color: $block-color;
+  border: solid $main-color 1px;
+  text-align: center;
 }
 
-.loadingText {
+.loading-text {
   text-align: center;
   font-weight: bold;
-}
-
-.adMainPic {
-  width: 250px;
-  height: 250px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  margin: 0 auto;
 }

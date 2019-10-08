@@ -4,10 +4,10 @@ import entityProps from '../propTypes';
 import '../scss/adPopup.scss';
 
 const component = ({ ad, pics, closeBtnHandler }) => (
-  <div className="adPopup">
-    <div className="adPopupContent">
-      <button type="button" onClick={closeBtnHandler}>close</button>
-      <table className="adPopupTable">
+  <div className="ad-popup">
+    <div className="ad-popup-content">
+      <button className="close-btn" type="button" onClick={closeBtnHandler}>close</button>
+      <table className="ad-popup-table">
         <tbody>
           <tr>
             <td>address</td>
@@ -50,22 +50,18 @@ const component = ({ ad, pics, closeBtnHandler }) => (
             </td>
           </tr>
           <tr>
-            <td className="tdCenter" colSpan="2">{ad.description}</td>
+            <td className="td-center" colSpan="2">{ad.description}</td>
           </tr>
           <tr>
-            <td className="tdCenter" colSpan="2">{`Ad parsed at: ${ad.createdAt}`}</td>
-          </tr>
-          <tr>
-            <td colSpan="2">
-              <div className="adPopupPicsList">
-                {pics.map(pic => (
-                  <img className="adPopupPic" key={pic.id} src={pic.url} alt="ad-pics" />
-                ))}
-              </div>
-            </td>
+            <td className="td-center" colSpan="2">{`Ad parsed at: ${ad.createdAt}`}</td>
           </tr>
         </tbody>
       </table>
+      <div className="ad-popup-pics-list">
+        {pics.map(pic => (
+          <img className="ad-popup-pic" key={pic.id} src={pic.url} alt="ad-pics" />
+        ))}
+      </div>
     </div>
   </div>
 );

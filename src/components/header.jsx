@@ -3,8 +3,8 @@ import '../scss/header.scss';
 
 const component = () => (
   <div className="head">
-    <h2 className="headTitle">Meta-realt</h2>
-    <p className="headTitleDescription">best realt ads aggregator</p>
+    <h2 className="head-title">Meta-realt</h2>
+    <p className="head-title-description">best realt ads aggregator</p>
   </div>
 );
 
