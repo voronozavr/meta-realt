@@ -11,6 +11,21 @@
   &:hover {
     border: solid $main-color 1px;
   }
+  @media only screen and (max-width: 1000px) {
+    width: 49%;
+  }
+  @media only screen and (max-width: 600px){
+    width: 100%;
+    margin: 0px;
+    border: none;
+    border-top: solid gray 1px;
+    border-bottom: solid gray 1px;
+    &:hover {
+      border: none;
+      border-top: solid $main-color 1px;
+      border-bottom: solid $main-color 1px;
+    }
+  }
 }
 
 .ad-head-text {

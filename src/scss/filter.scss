@@ -1,4 +1,5 @@
 @import "./colorPalette";
+@import "./adaptiveSizes.scss";
 
 $border-rad: 5px;
 
@@ -17,9 +18,22 @@ $border-rad: 5px;
   select {
     width: 100%;
   }
-
   input {
     width: 50%;
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 23%;
+  }
+  @media only screen and (max-width: 600px) {
+    float: none;
+    position: static;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    input, select {
+      height: $btn-input-height;
+    }
   }
 }
 
@@ -35,6 +49,9 @@ $border-rad: 5px;
   &:hover {
     color: $main-color;
     background: black;
+  }
+  @media only screen and (max-width: 600px) {
+    height: $btn-input-height;
   }
 }
 
@@ -65,5 +82,9 @@ $border-rad: 5px;
   background: darken($block-color, 10%);
   &:hover {
     background: darken($block-color, 25%);
+  }
+  @media only screen and (max-width: 600px) {
+    height: $btn-input-height;
+    width: 20%;
   }
 }

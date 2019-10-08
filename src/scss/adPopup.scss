@@ -66,4 +66,7 @@
     color: $main-color;
     background: black;
   }
+  @media only screen and (max-width: 600px) {
+    height: 55px;
+  }
 }

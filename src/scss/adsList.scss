@@ -7,6 +7,15 @@
   background-color: $block-color;
   border: solid $main-color 1px;
   text-align: center;
+  @media only screen and (max-width: 1000px) {
+    width: 75%;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    border: none;
+    float: none;
+    position: static;
+  }
 }
 
 .loading-text {

@@ -3,6 +3,9 @@
 .head {
   background-color: $block-color;
   border-bottom: solid $main-color 1px;
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+  }
 }
 
 .head-title {
