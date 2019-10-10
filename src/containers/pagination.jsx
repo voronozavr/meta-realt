@@ -6,7 +6,7 @@ import Pagination from '../components/pagination';
 import {
   pageIncrement,
   pageDecrease,
-} from '../actions/ads';
+} from '../actions/pagination';
 
 class pagination extends PureComponent {
   nextPageHandle = (pageCount) => {
@@ -39,7 +39,7 @@ class pagination extends PureComponent {
 const mapStateToProps = state => ({
   ads: state.entities.ads,
   adsCount: state.entities.adsCount,
-  currentPage: state.entities.currentPage,
+  currentPage: state.pagination.currentPage,
 });
 
 const mapDispatchToProps = dispatch => ({

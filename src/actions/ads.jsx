@@ -4,34 +4,10 @@ import {
   FETCH_ADS_SUCCESS,
   FETCH_ADS_FAILURE,
   FETCH_ADS_REQUEST,
-  ADS_PAGE_INCREMENT,
-  ADS_PAGE_DECREASE,
   FETCH_ADS_COUNT_REQUEST,
   FETCH_ADS_COUNT_SUCCESS,
   FETCH_ADS_COUNT_FAILURE,
 } from './actionsTypes';
-
-const getNextPage = nextPage => ({
-  type: ADS_PAGE_INCREMENT,
-  payload: nextPage,
-});
-
-const pageIncrement = (currentPage, lastPage) => (
-  dispatch => (
-    dispatch(getNextPage(currentPage < lastPage ? currentPage + 1 : currentPage))
-  )
-);
-
-const getPrevPage = prevPage => ({
-  type: ADS_PAGE_DECREASE,
-  payload: prevPage,
-});
-
-const pageDecrease = currentPage => (
-  dispatch => (
-    dispatch(getPrevPage(currentPage > 1 ? currentPage - 1 : currentPage))
-  )
-);
 
 const fetchAdsRequest = () => ({
   type: FETCH_ADS_REQUEST,
@@ -128,6 +104,4 @@ const fetchAdsCount = (regionid, localityid, rooms, iscombinedbathroom, hasbalco
 export {
   fetchAds,
   fetchAdsCount,
-  pageIncrement,
-  pageDecrease,
 };

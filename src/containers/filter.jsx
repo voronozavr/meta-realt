@@ -12,6 +12,9 @@ import {
   fetchAllRegions,
   changeFilter,
 } from '../actions/filter';
+import {
+  pageReset,
+} from '../actions/pagination';
 
 class filter extends PureComponent {
   componentDidMount() {
@@ -28,7 +31,7 @@ class filter extends PureComponent {
       currentPage,
     } = this.props;
     if (prevProps.currentPage !== currentPage) {
-      this.updateAdsList(currentPage);
+      this.updateAdsList();
     }
   }
 
@@ -39,7 +42,7 @@ class filter extends PureComponent {
     });
   }
 
-  updateAdsList = (page) => {
+  updateAdsList = () => {
     const {
       currentPage,
       currentRegion,
@@ -55,12 +58,13 @@ class filter extends PureComponent {
       balcony,
       updateAds,
     } = this.props;
-    const adsPage = page || currentPage;
     updateAds(currentRegion, currentLocality, roomsCount, combinedBathroom,
-      balcony, minPrice, maxPrice, minFloor, maxFloor, minSquare, maxSquare, adsPage);
+      balcony, minPrice, maxPrice, minFloor, maxFloor, minSquare, maxSquare, currentPage);
   }
 
   searchBtnHandle = () => {
+    const { resetCurrentPage } = this.props;
+    resetCurrentPage();
     this.updateAdsList();
   }
 
@@ -170,7 +174,7 @@ const mapStateToProps = state => ({
   regions: state.filter.regions,
   currentRegion: state.filter.currentRegion,
   currentLocality: state.filter.currentLocality,
-  currentPage: state.entities.currentPage,
+  currentPage: state.pagination.currentPage,
   roomsCount: state.filter.roomsCount,
   minPrice: state.filter.minPrice,
   maxPrice: state.filter.maxPrice,
@@ -193,6 +197,7 @@ const mapDispatchToProps = dispatch => ({
       maxPrice, minFloor, maxFloor, minSquare, maxSquare, page));
   },
   changeSearchFilter: filterObj => dispatch(changeFilter(filterObj)),
+  resetCurrentPage: () => dispatch(pageReset()),
 });
 
 filter.propTypes = {
@@ -214,6 +219,7 @@ filter.propTypes = {
   combinedBathroom: propTypes.bool,
   balcony: propTypes.bool,
   changeSearchFilter: propTypes.func.isRequired,
+  resetCurrentPage: propTypes.func.isRequired,
 };
 
 filter.defaultProps = {
