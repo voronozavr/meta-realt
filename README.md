@@ -1,7 +1,7 @@
 # meta-realt
 ## Installation
 ### Database and server setup
-  install back-end from [repository](https://github.com/voronozavr/meta-realt-server)
+  install back-end from [repository](https://github.com/krauchuk/meta-realt-server)
 ### Front-end application setup
   1. Go to root directory of project, install dependencies:
   ```
