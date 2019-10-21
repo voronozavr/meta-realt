@@ -44,22 +44,31 @@ class filter extends PureComponent {
 
   updateAdsList = () => {
     const {
-      currentPage,
-      currentRegion,
-      currentLocality,
-      roomsCount,
+      currentPage: page,
+      currentRegion: regionid,
+      currentLocality: localityid,
+      roomsCount: rooms,
+      minPrice, maxPrice,
+      minFloor, maxFloor,
+      minSquare, maxSquare,
+      combinedBathroom: iscombinedbathroom,
+      balcony: hasbalcony,
+      updateAds,
+    } = this.props;
+    updateAds({
+      regionid,
+      localityid,
+      rooms,
+      iscombinedbathroom,
+      hasbalcony,
       minPrice,
       maxPrice,
       minFloor,
       maxFloor,
       minSquare,
       maxSquare,
-      combinedBathroom,
-      balcony,
-      updateAds,
-    } = this.props;
-    updateAds(currentRegion, currentLocality, roomsCount, combinedBathroom,
-      balcony, minPrice, maxPrice, minFloor, maxFloor, minSquare, maxSquare, currentPage);
+      page,
+    });
   }
 
   searchBtnHandle = () => {
@@ -189,12 +198,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchRegions: () => dispatch(fetchAllRegions()),
   fetchLocalities: () => dispatch(fetchAllLocalities()),
-  updateAds: (region, locality, rooms, combinedBathroom, hasBalcony, minPrice,
-    maxPrice, minFloor, maxFloor, minSquare, maxSquare, page) => {
-    dispatch(fetchAdsCount(region, locality, rooms, combinedBathroom, hasBalcony, minPrice,
-      maxPrice, minFloor, maxFloor, minSquare, maxSquare));
-    dispatch(fetchAds(region, locality, rooms, combinedBathroom, hasBalcony, minPrice,
-      maxPrice, minFloor, maxFloor, minSquare, maxSquare, page));
+  updateAds: (options) => {
+    dispatch(fetchAdsCount(options));
+    dispatch(fetchAds(options));
   },
   changeSearchFilter: filterObj => dispatch(changeFilter(filterObj)),
   resetCurrentPage: () => dispatch(pageReset()),

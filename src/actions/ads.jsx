@@ -23,28 +23,14 @@ const fetchAdsFailure = error => ({
   payload: error,
 });
 
-const fetchAds = (regionid, localityid, rooms, iscombinedbathroom, hasbalcony, minPrice, maxPrice,
-  minFloor, maxFloor, minSquare, maxSquare, page) => (
+const fetchAds = options => (
   (dispatch) => {
     dispatch(fetchAdsRequest());
     const url = `${serverUrl}/ads`;
     return axios.get(
       url,
       {
-        params: {
-          regionid,
-          localityid,
-          rooms,
-          iscombinedbathroom,
-          hasbalcony,
-          minPrice,
-          maxPrice,
-          minFloor,
-          maxFloor,
-          minSquare,
-          maxSquare,
-          page,
-        },
+        params: options,
       },
     )
       .then((response) => {
@@ -70,26 +56,13 @@ const fetchAdsCountFailure = error => ({
   payload: error,
 });
 
-const fetchAdsCount = (regionid, localityid, rooms, iscombinedbathroom, hasbalcony, minPrice,
-  maxPrice, minFloor, maxFloor, minSquare, maxSquare) => (
+const fetchAdsCount = options => (
   (dispatch) => {
     const url = `${serverUrl}/ads/count`;
     dispatch(fetchAdsCountRequest());
     return axios.get(
       url, {
-        params: {
-          regionid,
-          localityid,
-          rooms,
-          iscombinedbathroom,
-          hasbalcony,
-          minPrice,
-          maxPrice,
-          minFloor,
-          maxFloor,
-          minSquare,
-          maxSquare,
-        },
+        params: options,
       },
     )
       .then((response) => {
