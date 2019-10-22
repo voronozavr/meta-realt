@@ -8,7 +8,7 @@ const component = ({
   clickHandle,
 }) => (
   <div id={ad.id} className="ad" onClick={clickHandle} role="presentation">
-    <p className="adHeadText">
+    <span className="ad-head-text">
       { `${ad.rooms} room(s) | ${ad.square} ` }
       m
       <sup>
@@ -16,15 +16,12 @@ const component = ({
           2
         </small>
       </sup>
-    </p>
-    <hr />
-    <img className="adMainPic" key={ad.id} src={ad['pic.url']} alt="ad-pic" />
-    <hr />
-    <p className="adAddress">
-      <span role="img" aria-label="House">&#127968;</span>
+    </span>
+    <img className="ad-main-pic" key={ad.id} src={ad['pic.url']} alt="ad-pic" />
+    <p className="ad-address">
       {ad.address}
     </p>
-    <p className="adPrice">
+    <p className="ad-price">
       {`${ad.price} BYN`}
     </p>
   </div>

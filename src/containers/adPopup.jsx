@@ -9,9 +9,11 @@ class adPopup extends PureComponent {
   componentDidUpdate() {
     const { show } = this.props;
     if (show) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflowY = 'scroll';
+      document.body.style.position = 'fixed';
     } else {
       document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
     }
   }
 

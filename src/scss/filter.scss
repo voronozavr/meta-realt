@@ -1,7 +1,90 @@
-.filterBlock {
-  height: 100%;
+@import "./colorPalette";
+@import "./adaptiveSizes.scss";
+
+$border-rad: 5px;
+
+.filter-block {
+  position: fixed;
+  width: 15%;
   float: left;
   font-family: Calibri;
-  background-color: #6b6a6b;
+  background-color: $block-color;
   padding: 5px;
+  margin: 25px 0px;
+  border: solid $main-color 1px;
+  border-left: none;
+  border-top-right-radius: $border-rad;
+  border-bottom-right-radius: $border-rad;
+  select {
+    width: 100%;
+  }
+  input {
+    width: 50%;
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 23%;
+  }
+  @media only screen and (max-width: 600px) {
+    float: none;
+    position: static;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    input, select {
+      height: $btn-input-height;
+    }
+  }
+}
+
+.search-btn {
+  font-weight: bold;
+  width: 100%;
+  margin: 5px 0px;
+  background: $main-color;
+  border: none;
+  padding: 3px;
+  outline: none;
+  border-radius: $border-rad;
+  &:hover {
+    color: $main-color;
+    background: black;
+  }
+  @media only screen and (max-width: 600px) {
+    height: $btn-input-height;
+  }
+}
+
+.search-text-header {
+  display: block;
+  text-transform: uppercase;
+  margin: 0 auto;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: solid $main-color 1px;
+}
+
+.search-text-option {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.search-option-block {
+  margin: 10px auto;
+}
+
+.rooms-btn {
+  border: none;
+  padding: 5px 10px;
+  margin: 2px;
+  outline: none;
+  background: darken($block-color, 10%);
+  &:hover {
+    background: darken($block-color, 25%);
+  }
+  @media only screen and (max-width: 600px) {
+    height: $btn-input-height;
+    width: 20%;
+  }
 }

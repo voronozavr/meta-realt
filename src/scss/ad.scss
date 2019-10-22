@@ -1,21 +1,63 @@
+@import "./colorPalette";
+
 .ad {
+  position: relative;
   border-radius: 2px;
-  background-color: #e6e6e6;
-  padding: 5px;
-  color: #2a2526;
+  border: solid gray 1px;
   font-family: Calibri;
+  display: inline-block;
+  width: 24%;
+  margin: 1px;
+  &:hover {
+    border: solid $main-color 1px;
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 49%;
+  }
+  @media only screen and (max-width: 600px){
+    width: 100%;
+    margin: 0px;
+    border: none;
+    border-top: solid gray 1px;
+    border-bottom: solid gray 1px;
+    &:hover {
+      border: none;
+      border-top: solid $main-color 1px;
+      border-bottom: solid $main-color 1px;
+    }
+  }
 }
 
-.adHeadText {
+.ad-head-text {
+  color: white;
+  background: rgba(black, .4);
   text-align: center;
   font-weight: bold;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
-.adAddress {
+.ad-main-pic {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.ad-address {
+  position: absolute;
   text-align: center;
+  bottom: 25px;
+  color: white;
+  background: rgba(black, .4);
 }
 
-.adPrice {
+.ad-price {
+  position: absolute;
   font-weight: bold;
-  text-align: right;
+  top: 200px;
+  right: 0px;
+  color: black;
+  background: $main-color;
 }

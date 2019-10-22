@@ -1,15 +1,23 @@
+@import "./colorPalette";
+
 .head {
-  background-color: #2a2b32;
+  background-color: $block-color;
+  border-bottom: solid $main-color 1px;
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+  }
 }
 
-.headTitle {
-  color: #5f62ac;
+.head-title {
+  color: black;
+  display: inline;
+  background-color: $main-color;
   font-family: "Arial Black";
   margin: 0px 5px 0px;
 }
 
-.headTitleDescription {
-  color: #d3d3d3;
+.head-title-description {
+  color: gray;
   font-family: Calibri;
   font-size: 15px;
   margin: 0px 15px;
