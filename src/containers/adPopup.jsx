@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import entityProps from '../propTypes';
-import AdPopup from '../components/adPopup';
+import Popup from '../components/adPopup';
 import { changeAdPopupStatus } from '../actions/adPopup';
 
-class adPopup extends PureComponent {
+class AdPopup extends PureComponent {
   componentDidUpdate() {
     const { show } = this.props;
     if (show) {
@@ -33,7 +33,7 @@ class adPopup extends PureComponent {
       return (<div>loading...</div>);
     }
     if (show) {
-      return (<AdPopup ad={ad} pics={pics} closeBtnHandler={this.closeBtnHandler} />);
+      return (<Popup ad={ad} pics={pics} closeBtnHandler={this.closeBtnHandler} />);
     }
     return (null);
   }
@@ -50,7 +50,7 @@ const mapStateToProps = state => ({
   show: state.adPopup.showPopup,
 });
 
-adPopup.propTypes = {
+AdPopup.propTypes = {
   ad: entityProps.ad.isRequired,
   pics: entityProps.pics.isRequired,
   loading: propTypes.bool.isRequired,
@@ -58,4 +58,4 @@ adPopup.propTypes = {
   changeAdPopupShowStatus: propTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(adPopup);
+export default connect(mapStateToProps, mapDispatchToProps)(AdPopup);

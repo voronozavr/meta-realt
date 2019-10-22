@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import entityProps from '../propTypes';
-import Filter from '../components/filter';
+import FilterBlock from '../components/filter';
 import {
   fetchAds,
   fetchAdsCount,
@@ -16,7 +16,7 @@ import {
   pageReset,
 } from '../actions/pagination';
 
-class filter extends PureComponent {
+class Filter extends PureComponent {
   componentDidMount() {
     const {
       fetchRegions,
@@ -48,9 +48,12 @@ class filter extends PureComponent {
       currentRegion: regionid,
       currentLocality: localityid,
       roomsCount: rooms,
-      minPrice, maxPrice,
-      minFloor, maxFloor,
-      minSquare, maxSquare,
+      minPrice,
+      maxPrice,
+      minFloor,
+      maxFloor,
+      minSquare,
+      maxSquare,
       combinedBathroom: iscombinedbathroom,
       balcony: hasbalcony,
       updateAds,
@@ -153,7 +156,7 @@ class filter extends PureComponent {
     } = this.props;
     return (
       <div>
-        <Filter
+        <FilterBlock
           regions={regions}
           localities={localities}
           currentRegion={currentRegion}
@@ -206,7 +209,7 @@ const mapDispatchToProps = dispatch => ({
   resetCurrentPage: () => dispatch(pageReset()),
 });
 
-filter.propTypes = {
+Filter.propTypes = {
   localities: entityProps.localities.isRequired,
   regions: entityProps.regions.isRequired,
   fetchRegions: propTypes.func.isRequired,
@@ -228,7 +231,7 @@ filter.propTypes = {
   resetCurrentPage: propTypes.func.isRequired,
 };
 
-filter.defaultProps = {
+Filter.defaultProps = {
   currentRegion: null,
   currentLocality: null,
   roomsCount: null,
@@ -242,4 +245,4 @@ filter.defaultProps = {
   balcony: null,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(filter);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

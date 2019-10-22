@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import entityProps from '../propTypes';
-import AdsList from '../components/adsList';
+import List from '../components/adsList';
 import { fetchAdPopupData, fetchAdPopupPics, changeAdPopupStatus } from '../actions/adPopup';
 import '../scss/adsList.scss';
 
-class adsList extends PureComponent {
+class AdsList extends PureComponent {
   adClickHandle = (e) => {
     const { showPopup } = this.props;
     showPopup(e.currentTarget.id);
@@ -19,7 +19,7 @@ class adsList extends PureComponent {
     } = this.props;
     return (
       loading ? <p className="loading-text">Loading</p>
-        : <AdsList ads={ads} clickHandle={this.adClickHandle} />
+        : <List ads={ads} clickHandle={this.adClickHandle} />
     );
   }
 }
@@ -38,10 +38,10 @@ const mapStateToProps = state => ({
   error: state.entities.error,
 });
 
-adsList.propTypes = {
+AdsList.propTypes = {
   ads: entityProps.ads.isRequired,
   loading: propTypes.bool.isRequired,
   showPopup: propTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(adsList);
+export default connect(mapStateToProps, mapDispatchToProps)(AdsList);

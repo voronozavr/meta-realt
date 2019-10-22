@@ -4,7 +4,7 @@ import entityProps from '../propTypes';
 import Ad from './ad';
 import '../scss/adsList.scss';
 
-const adsList = ({ ads, clickHandle }) => (
+const AdsList = ({ ads, clickHandle }) => (
   <div className="ads-list-container">
     {ads.map(ad => (
       <Ad
@@ -16,9 +16,9 @@ const adsList = ({ ads, clickHandle }) => (
   </div>
 );
 
-adsList.propTypes = {
+AdsList.propTypes = {
   ads: entityProps.ads.isRequired,
   clickHandle: propTypes.func.isRequired,
 };
 
-export default adsList;
+export default AdsList;

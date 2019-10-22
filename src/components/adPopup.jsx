@@ -3,7 +3,21 @@ import propTypes from 'prop-types';
 import entityProps from '../propTypes';
 import '../scss/adPopup.scss';
 
-const component = ({ ad, pics, closeBtnHandler }) => (
+const AdPopup = ({
+  ad: {
+    address,
+    floor,
+    rooms,
+    square,
+    price,
+    hasbalcony,
+    iscombinedbathroom,
+    description,
+    createdAt,
+  },
+  pics,
+  closeBtnHandler,
+}) => (
   <div className="ad-popup">
     <div className="ad-popup-content">
       <button className="close-btn" type="button" onClick={closeBtnHandler}>close</button>
@@ -11,15 +25,15 @@ const component = ({ ad, pics, closeBtnHandler }) => (
         <tbody>
           <tr>
             <td>address</td>
-            <td>{ad.address}</td>
+            <td>{address}</td>
           </tr>
           <tr>
             <td>floor</td>
-            <td>{ad.floor}</td>
+            <td>{floor}</td>
           </tr>
           <tr>
             <td>room(s)</td>
-            <td>{ad.rooms}</td>
+            <td>{rooms}</td>
           </tr>
           <tr>
             <td>
@@ -31,29 +45,29 @@ const component = ({ ad, pics, closeBtnHandler }) => (
               </sup>
               )
             </td>
-            <td>{ad.square}</td>
+            <td>{square}</td>
           </tr>
           <tr>
             <td>price(BYN)</td>
-            <td>{ad.price}</td>
+            <td>{price}</td>
           </tr>
           <tr>
             <td>balcony</td>
             <td>
-              <input type="checkbox" checked={ad.hasbalcony ? 'checked' : null} disabled />
+              <input type="checkbox" checked={hasbalcony ? 'checked' : null} disabled />
             </td>
           </tr>
           <tr>
             <td>bathroom</td>
             <td>
-              {ad.iscombinedbathroom ? 'combined' : 'separated'}
+              {iscombinedbathroom ? 'combined' : 'separated'}
             </td>
           </tr>
           <tr>
-            <td className="td-center" colSpan="2">{ad.description}</td>
+            <td className="td-center" colSpan="2">{description}</td>
           </tr>
           <tr>
-            <td className="td-center" colSpan="2">{`Ad parsed at: ${ad.createdAt}`}</td>
+            <td className="td-center" colSpan="2">{`Ad parsed at: ${createdAt}`}</td>
           </tr>
         </tbody>
       </table>
@@ -66,10 +80,10 @@ const component = ({ ad, pics, closeBtnHandler }) => (
   </div>
 );
 
-component.propTypes = {
+AdPopup.propTypes = {
   ad: entityProps.ad.isRequired,
   pics: entityProps.pics.isRequired,
   closeBtnHandler: propTypes.func.isRequired,
 };
 
-export default component;
+export default AdPopup;

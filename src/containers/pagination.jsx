@@ -2,13 +2,13 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import entityProps from '../propTypes';
-import Pagination from '../components/pagination';
+import PaginationBar from '../components/pagination';
 import {
   pageIncrement,
   pageDecrease,
 } from '../actions/pagination';
 
-class pagination extends PureComponent {
+class Pagination extends PureComponent {
   nextPageHandle = (pageCount) => {
     const { nextPage, currentPage } = this.props;
     nextPage(currentPage, pageCount);
@@ -26,7 +26,7 @@ class pagination extends PureComponent {
       currentPage,
     } = this.props;
     return (
-      ads.length ? <Pagination
+      ads.length ? <PaginationBar
         currentPage={currentPage}
         adsCount={adsCount}
         nextPageHandle={this.nextPageHandle}
@@ -47,7 +47,7 @@ const mapDispatchToProps = dispatch => ({
   prevPage: currentPage => dispatch(pageDecrease(currentPage)),
 });
 
-pagination.propTypes = {
+Pagination.propTypes = {
   ads: entityProps.ads.isRequired,
   adsCount: propTypes.number.isRequired,
   currentPage: propTypes.number.isRequired,
@@ -55,4 +55,4 @@ pagination.propTypes = {
   prevPage: propTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(pagination);
+export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

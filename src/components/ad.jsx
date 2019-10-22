@@ -3,13 +3,20 @@ import propTypes from 'prop-types';
 import entityProps from '../propTypes';
 import '../scss/ad.scss';
 
-const component = ({
-  ad,
+const Ad = ({
+  ad: {
+    id,
+    rooms,
+    square,
+    address,
+    price,
+    'pic.url': pic,
+  },
   clickHandle,
 }) => (
-  <div id={ad.id} className="ad" onClick={clickHandle} role="presentation">
+  <div id={id} className="ad" onClick={clickHandle} role="presentation">
     <span className="ad-head-text">
-      { `${ad.rooms} room(s) | ${ad.square} ` }
+      { `${rooms} room(s) | ${square} ` }
       m
       <sup>
         <small>
@@ -17,19 +24,19 @@ const component = ({
         </small>
       </sup>
     </span>
-    <img className="ad-main-pic" key={ad.id} src={ad['pic.url']} alt="ad-pic" />
+    <img className="ad-main-pic" key={id} src={pic} alt="ad-pic" />
     <p className="ad-address">
-      {ad.address}
+      {address}
     </p>
     <p className="ad-price">
-      {`${ad.price} BYN`}
+      {`${price} BYN`}
     </p>
   </div>
 );
 
-component.propTypes = {
+Ad.propTypes = {
   ad: entityProps.ad.isRequired,
   clickHandle: propTypes.func.isRequired,
 };
 
-export default component;
+export default Ad;

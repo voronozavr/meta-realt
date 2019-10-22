@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import '../scss/pagination.scss';
 
-const component = ({
+const Pagination = ({
   currentPage,
   adsCount,
   nextPageHandle,
@@ -24,11 +24,11 @@ const component = ({
   );
 };
 
-component.propTypes = {
+Pagination.propTypes = {
   currentPage: propTypes.number.isRequired,
   adsCount: propTypes.number.isRequired,
   nextPageHandle: propTypes.func.isRequired,
   prevPageHandle: propTypes.func.isRequired,
 };
 
-export default component;
+export default Pagination;
